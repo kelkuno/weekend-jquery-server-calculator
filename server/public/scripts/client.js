@@ -11,7 +11,11 @@ function onReady(){
     // $('#divideBtn').on('click', divideNum);
 }
 
+//operator buttons initialized to false
 let addOp = false;
+let subtractOp = false;
+let multiplyOp = false;
+let divideOp = false;
 
 function calculateNum(){
     //console.log('equals clicked');
