@@ -56,6 +56,7 @@ function displayAnswer(){
         url: '/calculator'
     }).then(function(response){
         console.log('in OG get');
+        displayHistory(response);
         //render to DOM
         el.append(`
         <h3>${response[response.length-1].answer}</h3>
@@ -69,7 +70,11 @@ function clearInputs(){
     $('input').val('');
 }
 
-
+function displayHistory(arrayObject){
+    $('#mathHistory').append(`
+    <li>${arrayObject[arrayObject.length-1].num1},${arrayObject[arrayObject.length-1].num2}, ${arrayObject[arrayObject.length-1].answer}</li>
+    `)
+}//end of displayHistory
     
 
 function addNum(){

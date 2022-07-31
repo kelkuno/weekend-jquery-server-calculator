@@ -26,7 +26,7 @@ let answer = 0;
 app.post('/calculator', function(req,res){
     let calculation = req.body;
     //console.log(req.body);
-    mathResponses.push(calculation);
+    //mathResponses.push(calculation);
     console.log('the array', mathResponses);
     doMath(calculation);
     res.sendStatus(200);
@@ -68,7 +68,7 @@ function doMath(equationObject){
     //     answer = 0;
     // }//end of other check
     console.log(answer);
-    storedAnswers.push({answer: answer});
+    storedAnswers.push({answer: answer, num1: num1, num2: num2, add: addOp, subtract: subtractOp, multiply: multiplyOp, divide: divideOp });
     // answer = 0;
     //function to reset answer to 0
 }
