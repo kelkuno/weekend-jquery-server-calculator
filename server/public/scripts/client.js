@@ -71,8 +71,19 @@ function clearInputs(){
 }
 
 function displayHistory(arrayObject){
+    let operator = '';
+    if(arrayObject[arrayObject.length-1].add === 'true'){
+        operator = '+'
+    } else if(arrayObject[arrayObject.length-1].subtract === 'true'){
+        operator = '-'
+    } else if(arrayObject[arrayObject.length-1].multiply === 'true'){
+        operator = '*'
+    } else if (arrayObject[arrayObject.length-1].divide === 'true'){
+        operator = '/';
+    }
+
     $('#mathHistory').append(`
-    <li>${arrayObject[arrayObject.length-1].num1},${arrayObject[arrayObject.length-1].num2}, ${arrayObject[arrayObject.length-1].answer}</li>
+    <li>${arrayObject[arrayObject.length-1].num1} ${operator} ${arrayObject[arrayObject.length-1].num2} = ${arrayObject[arrayObject.length-1].answer}</li>
     `)
 }//end of displayHistory
     
