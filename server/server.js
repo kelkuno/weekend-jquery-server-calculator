@@ -19,6 +19,8 @@ app.listen(port, () => {
 app.use(express.urlencoded({extended : true}));
 
 let mathResponses = [];
+let storedAnswers = [];
+let answer = 0;
 
 //POST '/calculator route
 app.post('/calculator', function(req,res){
@@ -30,10 +32,15 @@ app.post('/calculator', function(req,res){
     res.sendStatus(200);
 });
 
+app.get('/calculator', function(req,res){
+    console.log('in server GET');
+    console.log(storedAnswers);
+    res.send(storedAnswers);
+})
+
 //Functions
 
 function doMath(equationObject){
-    let answer = 0;
     let num1 = parseInt(equationObject.num1);
     let num2 = parseInt(equationObject.num2);
     let addOp = equationObject.add;
@@ -45,8 +52,20 @@ function doMath(equationObject){
     if(addOp === 'true'){
         answer = num1 + num2;
     }//end of add check
-    else{
-        answer = 5;
-    }
+    else if(subtractOp === 'true'){
+        answer = num1 - num2;
+    }//end of subtract check
+    else if(multiplyOp === 'true'){
+        answer = num1 * num2;
+    }//end of multiply check
+    else if(divideOp === 'true'){
+        answer = num1 * num2;
+    }//end of divide check
+    // else{
+    //     answer = 0;
+    // }//end of other check
     console.log(answer);
+    storedAnswers.push({answer: answer});
+    // answer = 0;
+    //function to reset answer to 0
 }
