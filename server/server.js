@@ -24,15 +24,24 @@ let storedAnswers = [];
 let answer = 0;
 
 //POST '/calculator route
-//
+//This post route takes in the the math object 
+//that includes the two num inputs and 
+//boolean alerting which math operation
+//has been selected.
+//The object then goes through doMath function
+//Does the calculation and makes a new object
+//to be stored in storedAnswers array. 
 app.post('/calculator', function(req,res){
     let calculation = req.body;
     //console.log(req.body);
- 
     doMath(calculation);
     res.sendStatus(200);
 });
 
+//GET on /calculator route
+//This GET request will serve the client
+//the storedAnswers array that contain the 
+//dataObject created from the doMath function.
 app.get('/calculator', function(req,res){
     console.log('in server GET');
     console.log(storedAnswers);
@@ -40,7 +49,10 @@ app.get('/calculator', function(req,res){
 })
 
 //Functions
-
+//doMath function creates new variables and assigns them to 
+//object properties and proceeds to do the math equation.
+//the return is creating an object and pushing it to
+//the storedAnswers array. 
 function doMath(equationObject){
     let num1 = parseInt(equationObject.num1);
     let num2 = parseInt(equationObject.num2);
@@ -48,11 +60,15 @@ function doMath(equationObject){
     let subtractOp = equationObject.subtract;
     let multiplyOp = equationObject.multiply;
     let divideOp = equationObject.divide;
+
     //break down different operators in conditional
     
     console.log('this is num1', num1);
     console.log('this is num2', num2);
     console.log('this is .add', addOp);
+    //the conditionals to check which operator was selected.
+    //if the math operator evaluates to true, that corresponding
+    //operator was selected by user and math should reflect. 
     if(addOp === 'true'){
         answer = num1 + num2;
     }//end of add check
@@ -65,9 +81,6 @@ function doMath(equationObject){
     else if(divideOp === 'true'){
         answer = num1 / num2;
     }//end of divide check
-    // else{
-    //     answer = 0;
-    // }//end of other check
     console.log(answer);
     storedAnswers.push({answer: answer, num1: num1, num2: num2, add: addOp, subtract: subtractOp, multiply: multiplyOp, divide: divideOp });
     // answer = 0;
