@@ -18,16 +18,17 @@ app.listen(port, () => {
 //will be undefined. 
 app.use(express.urlencoded({extended : true}));
 
-let mathResponses = [];
+//variables outside of the functions
+
 let storedAnswers = [];
 let answer = 0;
 
 //POST '/calculator route
+//
 app.post('/calculator', function(req,res){
     let calculation = req.body;
     //console.log(req.body);
-    //mathResponses.push(calculation);
-    console.log('the array', mathResponses);
+ 
     doMath(calculation);
     res.sendStatus(200);
 });
