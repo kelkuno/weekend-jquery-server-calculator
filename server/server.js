@@ -44,6 +44,9 @@ function doMath(equationObject){
     let num1 = parseInt(equationObject.num1);
     let num2 = parseInt(equationObject.num2);
     let addOp = equationObject.add;
+    let subtractOp = equationObject.subtract;
+    let multiplyOp = equationObject.multiply;
+    let divideOp = equationObject.divide;
     //break down different operators in conditional
     
     console.log('this is num1', num1);
@@ -59,7 +62,7 @@ function doMath(equationObject){
         answer = num1 * num2;
     }//end of multiply check
     else if(divideOp === 'true'){
-        answer = num1 * num2;
+        answer = num1 / num2;
     }//end of divide check
     // else{
     //     answer = 0;

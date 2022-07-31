@@ -28,20 +28,30 @@ function calculateNum(){
         data: {
             num1: $('#numOneIn').val(),
             num2: $('#numTwoIn').val(),
-            add: addOp
+            add: addOp,
+            subtract: subtractOp,
+            multiply: multiplyOp,
+            divide: divideOp
         }//end of data being sent
     }).then(function(response){
         console.log('success');
         //still to do.
     })//end of function
     displayAnswer();
+    //switch back operation variables to false
+    addOp = false;
+    subtractOp = false;
+    multiplyOp = false;
+    divideOp = false;
+    //clear input fields
+    clearInputs();
 }//end of calculateNum
 
 function displayAnswer(){
     //empty display fields.
      el = $('#answerDisplay');
      el.empty();
-
+//GET request from server to get answer
      $.ajax({
         method: 'GET',
         url: '/calculator'
@@ -52,10 +62,11 @@ function displayAnswer(){
         <h3>${response[response.length-1].answer}</h3>
     `);
     })
-
-    //GET request from server to get answer
-   
 }//end of displayFunction 
+
+function clearInputs(){
+    $('input').val('');
+}
 
 
     
@@ -66,13 +77,13 @@ function addNum(){
 }
 function subtractNum(){
     console.log('subtract clicked');
-    addOp = true;
+    subtractOp = true;
 }
 function multiplyNum(){
     console.log('multiply clicked');
-    addOp = true;
+    multiplyOp = true;
 }
 function divideNum(){
     console.log('divide clicked');
-    addOp = true;
+    divideOp = true;
 }
