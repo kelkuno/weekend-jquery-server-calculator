@@ -10,6 +10,7 @@ function onReady(){
     $('#subtractBtn').on('click', subtractNum);
     $('#multiplyBtn').on('click', multiplyNum);
     $('#divideBtn').on('click', divideNum);
+    $('#clearBtn').on('click', clearInputs);
 
   
 }
@@ -43,8 +44,6 @@ function calculateNum(){
     subtractOp = false;
     multiplyOp = false;
     divideOp = false;
-    //clear input fields
-    clearInputs();
 }//end of calculateNum
 
 function displayAnswer(){
@@ -64,7 +63,9 @@ function displayAnswer(){
     })
 }//end of displayFunction 
 
+
 function clearInputs(){
+    console.log('you clicked, clear');
     $('input').val('');
 }
 
