@@ -34,15 +34,15 @@ app.post('/calculator', function(req,res){
 
 function doMath(equationObject){
     let answer = 0;
-    let num1 = equationObject.num1;
-    let num2 = equationObject.num2;
+    let num1 = parseInt(equationObject.num1);
+    let num2 = parseInt(equationObject.num2);
     let addOp = equationObject.add;
     //break down different operators in conditional
     
     console.log('this is num1', num1);
     console.log('this is num2', num2);
     console.log('this is .add', addOp);
-    if(addOp === true){
+    if(addOp === 'true'){
         answer = num1 + num2;
     }//end of add check
     else{
